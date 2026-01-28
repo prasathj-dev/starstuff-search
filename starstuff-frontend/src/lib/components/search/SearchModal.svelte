@@ -13,22 +13,27 @@
 	let timer: ReturnType<typeof setTimeout>;
 	let controller: AbortController | null = null;
 
+	// Function to handle search requests with debounce and cancellation
 	const handleSearch = async (query: string, signal: AbortSignal) => {
+		// Debounce: wait 300ms before sending the request to avoid too many API calls
 		timer = setTimeout(async () => {
 			isLoading = true;
 			errorMessage = '';
 			try {
+				// Send fetch request with AbortSignal to allow cancellation
 				const res = await fetch(`/api/search?query=${encodeURIComponent(query)}`, { signal });
 				if (!res.ok) throw new Error(`Search failed: ${res.status}`);
 
 				const data = await res.json();
 				searchReponse = data;
 			} catch (err: any) {
+				// Ignore if request was aborted, otherwise show error
 				if (err.name !== 'AbortError') {
 					errorMessage = 'Something went wrong';
 					searchReponse = null;
 				}
 			} finally {
+				// Only update loading state if request was not aborted
 				if (!signal.aborted) isLoading = false;
 			}
 		}, 300);
@@ -48,19 +53,16 @@
 			isLoading = false;
 		}
 
-		//  CLEANUP
 		return () => {
+			// CLEANUP: clear timer and abort previous request on dependency change/unmount
 			clearTimeout(timer);
 			controller?.abort();
 		};
 	});
 </script>
 
-<!-- <div
-	transition:scale={{ duration: 130, start: 0.9 }}
-	class="fixed inset-0 z-50 flex flex-col items-center justify-start bg-black/70 pt-40 backdrop-blur-md"
-> -->
 <div
+	transition:scale={{ duration: 130, start: 0.9 }}
 	class="fixed inset-0 z-50 flex flex-col items-center justify-start bg-black/70 pt-40 backdrop-blur-md"
 >
 	<div
