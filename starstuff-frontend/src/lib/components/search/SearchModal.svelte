@@ -51,6 +51,7 @@
 		} else {
 			searchReponse = null;
 			isLoading = false;
+			errorMessage = '';
 		}
 
 		return () => {
