@@ -18,6 +18,7 @@ jspm_packages/
 # DB Files
 starstuff-backend/src/db/*.db-wal
 starstuff-backend/src/db/*.db-shm
+starstuff-backend/src/db/*.db 
 
 # Backend dependencies
 starstuff-backend/node_modules/
