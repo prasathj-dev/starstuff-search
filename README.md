@@ -9,6 +9,9 @@ The focus is not just on returning results, but on making the search feel
 **snappy, forgiving of typos, and easy to scale** as the dataset grows.
 
 ---
+## Screenshots 
+![Search modal showing users, spaces and communities](https://github.com/prasathj-dev/starstuff-search/blob/4a0ab8b29aed69e97f200fe205f0f2fab7c85057/website_preview.png
+)
 
 ## Repository Structure
 
