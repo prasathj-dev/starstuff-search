@@ -132,7 +132,7 @@ Added FTS5 virtual table for speedup search
 
 ## Performance Awareness & Scaling
 
-**Current setup (~10k records)**
+**Current setup (~100k records)**
 
 - For the mock dataset, performance is already within a comfortable range:
 - Search queries are consistently fast (generally under 100 ms on my machine).

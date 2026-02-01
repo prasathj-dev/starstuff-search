@@ -17,7 +17,7 @@
 			</span>
 		</div>
 		<ul>
-			{#each items as item, i}
+			{#each items as item, i (item.id)}
 				<li class="mx-2">
 					<button
 						type="button"

@@ -33,7 +33,7 @@ const insertComm = db.prepare(
   "INSERT INTO communities (id,title) VALUES (?,?)",
 );
 
-//Adding Dummy 10k records at once
+//Adding Dummy 100k records at once
 const seed = db.transaction(() => {
   // Clear everything
   db.prepare("DELETE FROM users").run();
@@ -76,6 +76,6 @@ const seed = db.transaction(() => {
   ).run();
 });
 
-console.log("db started to seeding with 10k records..Please wait");
+console.log("db started to seeding with 100k records..Please wait");
 seed();
 console.log("db has been seeded");
